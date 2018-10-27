@@ -29,10 +29,7 @@ if($query){
 			echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/true';
 			echo "/";
 		}
-		else{
-			echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/false';
-			echo "/";
-		}
+
 	}	
 }
 	
