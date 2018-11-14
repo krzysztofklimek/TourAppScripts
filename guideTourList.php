@@ -10,7 +10,7 @@ if(mysqli_connect_error($con)){
 
 $string = $_GET['string'];
 
-$query=mysqli_query($con, "SELECT * FROM tours");
+$query=mysqli_query($con, "SELECT * FROM tours WHERE guideEmail = '$string'");
 
 $query_user=mysqli_query($con, "SELECT * FROM users WHERE email = '$string'");
 
@@ -21,14 +21,14 @@ if($query){
 	
 	while($row = $query->fetch_assoc()){
 		
-		$tour_id = $row['id'];
-		$query_check_box=mysqli_query($con, "SELECT * FROM userstours WHERE user_id_fk = '$id' AND tour_id_fk = '$tour_id'");
-		$how_many_rows = $query_check_box->num_rows;
+		//$tour_id = $row['id'];
+		//$query_check_box=mysqli_query($con, "SELECT * FROM userstours WHERE user_id_fk = '$id' AND tour_id_fk = '$tour_id'");
+		//$how_many_rows = $query_check_box->num_rows;
 		
-		if($how_many_rows>0){
+		//if($how_many_rows>0){
 			echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/true';
 			echo "/";
-		}
+		//}
 
 	}	
 }
