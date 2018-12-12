@@ -19,21 +19,48 @@ $id = $query_user_result['id'];
 		
 if($query){
 	
+	echo '{'.'"tours":'.'[';
+	
 	while($row = $query->fetch_assoc()){
 		
 		$tour_id = $row['id'];
 		$query_check_box=mysqli_query($con, "SELECT * FROM userstours WHERE user_id_fk = '$id' AND tour_id_fk = '$tour_id'");
 		$how_many_rows = $query_check_box->num_rows;
 		
+		
+		$myObj = new \stdClass();
+		
 		if($how_many_rows>0){
-			echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/true';
-			echo "/";
+			$myObj ->tourName = $row['name'];
+			$myObj ->tourDate = $row['date'];
+			$myObj ->tourDesc = $row['description'];
+			$myObj ->tourBool = 'true';
+			
+			$myJSON = json_encode($myObj);
+			
+			echo $myJSON;
+			echo ',';
+			
+			//echo $row['name'].'/'.$row['date'].'/'.$row['description'].//'/true';
+			//echo "/";
 		}
 		else{
-			echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/false';
-			echo "/";
+			$myObj ->tourName = $row['name'];
+			$myObj ->tourDate = $row['date'];
+			$myObj ->tourDesc = $row['description'];
+			$myObj ->tourBool = 'false';
+			
+			$myJSON = json_encode($myObj);
+			
+			echo $myJSON;
+			echo ',';
+			
+			//echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/false';
+			//echo "/";
 		}
 	}	
+	
+	echo ']'.'}';
 }
 	
 	
