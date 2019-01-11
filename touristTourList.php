@@ -2,7 +2,10 @@
 
 require_once "connect.php";
 
+//mysql_query("SET NAMES 'latin2'");
+
 $con=mysqli_connect($host, $username, $pwd, $db);
+$con->set_charset("utf-8");
 
 if(mysqli_connect_error($con)){
 	echo "Failed to connect";

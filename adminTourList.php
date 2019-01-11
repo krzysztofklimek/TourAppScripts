@@ -22,7 +22,8 @@ if($query){
 	while($row = $query->fetch_assoc()){
 		
 
-			echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/false';
+			//echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/false';
+			echo $row['name'].'/'.$row['date'].'/'.$row['description'].'/false/'.$row['guideName'].'/'.$row['guideSurname'];
 			echo "/";
 		
 	}	
