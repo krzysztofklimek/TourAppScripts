@@ -19,7 +19,7 @@ if($query){
 	while($row = $query->fetch_assoc()){
 		
 
-			echo $row['email'];
+			echo $row['email'].'/'.$row['name'].'/'.$row['surname'];
 			echo "/";
 		
 	}	
